@@ -56,3 +56,6 @@ temp_*.py
 downloads/
 downloads_*/
 download_log.txt
+test_all_content/
+unifai_data_catch/
+all_content/

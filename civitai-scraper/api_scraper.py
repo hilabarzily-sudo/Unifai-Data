@@ -29,6 +29,7 @@ class CivitaiAPIScraper:
         """Fetch models from API"""
         all_models = []
         page = 1
+        cursor = None
 
         params = {
             "limit": API_CONFIG["limit_per_page"],
@@ -51,7 +52,11 @@ class CivitaiAPIScraper:
 
         with tqdm(desc="Fetching via API", unit="page") as pbar:
             while page <= max_pages:
-                params["page"] = page
+                # Use cursor for pagination
+                if cursor:
+                    params["cursor"] = cursor
+                elif "cursor" in params:
+                    del params["cursor"]
 
                 try:
                     response = self.session.get(
@@ -71,7 +76,9 @@ class CivitaiAPIScraper:
                     pbar.set_postfix({"Total": len(all_models)})
 
                     metadata = data.get("metadata", {})
-                    if not metadata.get("nextPage"):
+                    # Get nextCursor for next page
+                    cursor = metadata.get("nextCursor")
+                    if not cursor:
                         break
 
                     page += 1

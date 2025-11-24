@@ -51,3 +51,8 @@ chromedriver.log
 # Test files
 test_*.py
 temp_*.py
+
+# Downloaded data (too large for git)
+downloads/
+downloads_*/
+download_log.txt

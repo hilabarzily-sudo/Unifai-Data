@@ -1,0 +1,35 @@
+# Official Civitai repository (for reference only)
+civitai-official/
+
+# Downloaded data
+civitai-scraper/unifai_data_catch/
+unifai_data_catch/
+
+# Test directories
+test_*/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
